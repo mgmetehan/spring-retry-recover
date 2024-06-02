@@ -11,7 +11,7 @@ import org.springframework.retry.support.RetryTemplate;
 @Configuration
 public class RetryConfig {
 
-  @Bean
+  @Bean//not required method if @EnableRetry is used
   public RetryTemplate retryTemplate() {
     RetryTemplate retryTemplate = new RetryTemplate();
 

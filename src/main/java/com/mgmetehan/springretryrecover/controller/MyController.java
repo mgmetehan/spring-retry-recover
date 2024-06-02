@@ -20,4 +20,14 @@ public class MyController {
             return "Failed";
         }
     }
+
+    @GetMapping("/callExternalService2")
+    public String callExternalService2() {
+        try {
+            myService.callExternalService2("");
+            return "Success";
+        } catch (Exception e) {
+            return "Failed";
+        }
+    }
 }
