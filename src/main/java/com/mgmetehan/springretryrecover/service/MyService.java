@@ -26,7 +26,7 @@ public class MyService {
         log.info("In recover method");
     }
 
-    @Retryable(retryFor = SQLException.class, recover = "recover2", maxAttempts = 5,
+    @Retryable(retryFor = SQLException.class, recover = "recover2", noRetryFor = RuntimeException.class ,maxAttempts = 5,
             backoff = @Backoff(delay = 2000, multiplier = 2, maxDelay = 30000))
     public void callExternalService2(String sql) throws SQLException {
         if (StringUtils.isEmpty(sql)) {
