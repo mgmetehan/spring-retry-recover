@@ -1,33 +1,34 @@
 package com.mgmetehan.springretryrecover.controller;
 
-import com.mgmetehan.springretryrecover.service.MyService;
+import com.mgmetehan.springretryrecover.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-public class MyController {
+public class OrderController {
 
-    private final MyService myService;
+    private final OrderService orderService;
 
-    @GetMapping("/callExternalService")
-    public String callExternalService() {
+    @GetMapping("/retryOrderProcess")
+    public String retryOrderProcess() {
         try {
-            myService.callExternalService("");
+            orderService.processOrder("");
             return "Success";
         } catch (Exception e) {
             return "Failed";
         }
     }
 
-    @GetMapping("/callExternalService2")
-    public String callExternalService2() {
+    @GetMapping("/retryOrderProcessWithBackoff")
+    public String retryOrderProcessWithBackoff() {
         try {
-            myService.callExternalService2("");
+            orderService.processOrderWithBackoff("");
             return "Success";
         } catch (Exception e) {
             return "Failed";
         }
     }
 }
+
